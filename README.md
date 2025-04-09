@@ -10,7 +10,7 @@ https://github.com/wanghaisheng/tiktok-hashtag-analysis
 
 https://github.com/wanghaisheng/marketing-report
 
-https://github.com/wanghaisheng/hashtags_and_keywords_social_media_quick_search
+https://github.com/wanghaisheng/social-media-hashtag-search-builder
 
 https://github.com/wanghaisheng/Hashtag-Monitor
 
