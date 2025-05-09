@@ -17,4 +17,9 @@ https://github.com/wanghaisheng/Hashtag-Monitor
 ## chrome extension
 
 
-## 
+##  tiktok hashtags
+
+
+### lately ata tracking
+
+### historical data

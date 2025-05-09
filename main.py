@@ -482,6 +482,8 @@ async def main():
         # https://www.cosmopolitan.com/entertainment/celebs/a61865984/very-demure-tiktok-trend/
         # Add other links as needed
 ]
+
+
     domain=env_vars['DOMAIN'].lower()
 
 # Print all links
@@ -512,5 +514,31 @@ async def main():
         env_vars['TIME_FRAME']
     )
 
+
+
+def write_to_local_csv(data_iterable, base_filename="result/output", max_rows_per_file=1000000):
+    """Write data to local CSV files, splitting into multiple files if rows exceed max_rows_per_file."""
+    os.makedirs(os.path.dirname(base_filename), exist_ok=True)
+    file_count = 1
+    row_count = 0
+    csv_file = None
+    writer = None
+    for row in data_iterable:
+        if row_count % max_rows_per_file == 0:
+            if csv_file:
+                csv_file.close()
+            filename = f"{base_filename}_{file_count}.csv"
+            csv_file = open(filename, mode="w", newline='', encoding="utf-8")
+            writer = csv.DictWriter(csv_file, fieldnames=list(row.keys()))
+            writer.writeheader()
+            file_count += 1
+        writer.writerow(row)
+        row_count += 1
+    if csv_file:
+        csv_file.close()
+
+# Example usage in geturls_py and geturls:
+# Instead of calling write_to_cloudflare_d1, collect data rows in a list or generator, and call write_to_local_csv if needed.
+# You can add a parameter like write_to_csv=False to control this behavior.
 if __name__ == "__main__":
     asyncio.run(main())
